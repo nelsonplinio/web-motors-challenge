@@ -58,7 +58,7 @@ export const Checkbox = styled.div`
     border-bottom: 2px solid;
     border-color: #f51344;
     transform: rotate(-45deg);
-
+    transition: 0.4s;
     left: 4px;
     top: 4px;
   }
@@ -203,6 +203,10 @@ export const SubmitButton = styled.button.attrs({
   @media (max-width: 870px) {
     order: 1;
     width: 100%;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 16px;
   }
 `;
 

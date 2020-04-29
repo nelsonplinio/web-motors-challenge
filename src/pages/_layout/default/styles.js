@@ -10,7 +10,7 @@ export const Container = styled.div`
   width: 100%;
   max-width: 933px;
   margin: 16px auto;
-
+  overflow: hidden;
   @media (max-width: 600px) {
     align-items: center;
   }
@@ -77,11 +77,25 @@ export const NavTab = styled(NavLink).attrs({
 
   span {
     font-size: 28px;
+    @media (max-width: 400px) {
+      font-size: 20px;
+    }
+
+    @media (max-width: 330px) {
+      font-size: 16px;
+      p {
+        font-size: 10px;
+      }
+    }
 
     p {
       font-weight: 600;
       font-size: 12px;
       color: #666 !important;
+
+      @media (max-width: 330px) {
+        font-size: 10px;
+      }
     }
   }
 
