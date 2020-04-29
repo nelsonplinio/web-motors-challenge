@@ -6,7 +6,7 @@ import { darken } from 'polished';
 export const Container = styled.label`
   border: solid 2px #f0f0f0;
   border-radius: 4px;
-  padding: 8px;
+  padding: 8px 2px;
   display: flex;
   flex: 1;
   margin-top: 16px;
@@ -16,8 +16,8 @@ export const Container = styled.label`
 
   span {
     color: #888;
-    font-size: 18px;
-    margin-left: 8px;
+    font-size: 15px;
+    margin-left: 2px;
     width: fit-content;
   }
 
@@ -28,7 +28,7 @@ export const Container = styled.label`
 `;
 
 export const IconContainer = styled.div`
-  margin-left: 8px;
+  margin-left: 4px;
   font-size: 20px;
   color: #f51344;
   display: flex;

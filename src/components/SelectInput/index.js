@@ -11,7 +11,6 @@ const customSelectStyle = {
     alignItems: 'stretch',
     justifyContent: 'space-between',
   }),
-
   menu: (provided) => ({
     ...provided,
     position: 'absolute',
@@ -20,39 +19,41 @@ const customSelectStyle = {
     backgroundColor: '#f1f1f1',
     borderRadius: 4,
   }),
-  dropdownIndicator: (provided, { isFocused }) => {
-    return {
-      color: isFocused ? darken(0.2, '#999') : '#999',
-    };
-  },
-  clearIndicator: (provided) => {
-    return {
-      ...provided,
-      color: '#fff',
-      borderRadius: '50%',
-      padding: 2,
-      background: 'rgba(150, 150, 150, 0.4)',
-      fontSize: 12,
-      cursor: 'pointer',
-    };
-  },
-  option: (provided, { isSelected, isFocused }) => {
-    return {
-      ...provided,
-      backgroundColor: (isSelected || isFocused) && '#f51344',
-      color: isSelected || isFocused ? '#fff' : '#999',
-    };
-  },
-  indicatorsContainer: (provided) => {
-    return {
-      ...provided,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end',
-      padding: 0,
-      maxWidth: 40,
-    };
-  },
+  dropdownIndicator: (provided, { isFocused }) => ({
+    fontSize: 10,
+    color: isFocused ? darken(0.2, '#999') : '#999',
+  }),
+  clearIndicator: (provided) => ({
+    ...provided,
+    color: '#fff',
+    borderRadius: '50%',
+    padding: 2,
+    background: 'rgba(150, 150, 150, 0.4)',
+    fontSize: 8,
+    cursor: 'pointer',
+  }),
+  option: (provided, { isSelected, isFocused }) => ({
+    ...provided,
+    fontSize: 14,
+    backgroundColor: (isSelected || isFocused) && '#f51344',
+    color: isSelected || isFocused ? '#fff' : '#999',
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    fontSize: 14,
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    fontSize: 14,
+  }),
+  indicatorsContainer: (provided) => ({
+    ...provided,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: 0,
+    maxWidth: 40,
+  }),
   input: (provided) => ({
     ...provided,
     flex: 1,
@@ -66,10 +67,11 @@ export default function SelectInput({
   loadOptions,
   style,
   async,
+  className,
   ...rest
 }) {
   return (
-    <Container htmlFor="selector" style={style}>
+    <Container className={className} htmlFor="selector" style={style}>
       {Icon && <IconContainer>{Icon}</IconContainer>}
 
       {label && <span>{label}:</span>}
@@ -100,17 +102,19 @@ export default function SelectInput({
 SelectInput.propTypes = {
   icon: PropTypes.element,
   label: PropTypes.string,
-  options: PropTypes.arrayOf,
+  options: PropTypes.arrayOf(PropTypes.object),
   loadOptions: PropTypes.func,
   async: PropTypes.bool,
+  className: PropTypes.string,
   style: PropTypes.oneOf(PropTypes.array, PropTypes.object),
 };
 
 SelectInput.defaultProps = {
   icon: null,
-  options: null,
-  loadOptions: null,
+  options: [],
+  loadOptions: () => {},
   style: {},
   async: false,
   label: null,
+  className: null,
 };

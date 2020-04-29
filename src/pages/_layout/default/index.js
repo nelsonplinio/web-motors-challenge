@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaMotorcycle, FaCar } from 'react-icons/fa';
-import { Container, Logo, Header, NavTab, Content } from './styles';
+import { Container, Logo, Header, NavTab } from './styles';
 // GrCar RiMotorbikeLine
 export default function DefaultLayout({ children }) {
   return (
@@ -27,8 +27,8 @@ export default function DefaultLayout({ children }) {
 
         <button type="button">Vender meu carro</button>
       </Header>
-
-      <Content>{children}</Content>
+      {children}
+      {/* <Content></Content> */}
     </Container>
   );
 }

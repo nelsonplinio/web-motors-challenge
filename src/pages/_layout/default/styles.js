@@ -7,10 +7,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 16px;
   width: 100%;
-  max-width: 1550px;
+  max-width: 933px;
   margin: 16px auto;
+
+  @media (max-width: 600px) {
+    align-items: center;
+  }
 `;
 
 export const Logo = styled.img`
@@ -27,6 +30,9 @@ export const Header = styled.div`
   div {
     display: flex;
     align-items: center;
+    @media (max-width: 600px) {
+      width: 100%;
+    }
   }
 
   button {
@@ -42,6 +48,10 @@ export const Header = styled.div`
     &:hover {
       color: ${darken(0.05, '#F57C00')};
       border-color: ${darken(0.05, '#F57C00')};
+    }
+
+    @media (max-width: 600px) {
+      display: none;
     }
   }
 `;
@@ -79,16 +89,10 @@ export const NavTab = styled(NavLink).attrs({
     color: #f51344;
     border-bottom-color: #f51344;
   }
-`;
 
-export const Content = styled.div`
-  background: #fff;
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 1px 1px 4px rgba(200, 200, 200, 0.8);
+  @media (max-width: 600px) {
+    flex: 1;
+    align-content: center;
+    justify-content: center;
+  }
 `;
