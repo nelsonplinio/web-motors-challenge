@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { darken } from 'polished';
 
-import { Container, IconContainer, AsyncSelect, Select } from './styles';
+import { Container, IconContainer, Select } from './styles';
 
 const customSelectStyle = {
   control: () => ({
@@ -64,9 +64,7 @@ export default function SelectInput({
   icon: Icon,
   label,
   options,
-  loadOptions,
   style,
-  async,
   className,
   ...rest
 }) {
@@ -76,25 +74,13 @@ export default function SelectInput({
 
       {label && <span>{label}:</span>}
 
-      {async ? (
-        <AsyncSelect
-          id="selector"
-          {...rest}
-          options={options}
-          cacheOptions
-          defaultOptions
-          loadOptions={loadOptions}
-          styles={customSelectStyle}
-        />
-      ) : (
-        <Select
-          id="selector"
-          {...rest}
-          options={options}
-          defaultOptions
-          styles={customSelectStyle}
-        />
-      )}
+      <Select
+        id="selector"
+        {...rest}
+        options={options}
+        defaultOptions
+        styles={customSelectStyle}
+      />
     </Container>
   );
 }
@@ -103,8 +89,6 @@ SelectInput.propTypes = {
   icon: PropTypes.element,
   label: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.object),
-  loadOptions: PropTypes.func,
-  async: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.oneOf(PropTypes.array, PropTypes.object),
 };
@@ -112,9 +96,7 @@ SelectInput.propTypes = {
 SelectInput.defaultProps = {
   icon: null,
   options: [],
-  loadOptions: () => {},
   style: {},
-  async: false,
   label: null,
   className: null,
 };
